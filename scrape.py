@@ -24,14 +24,14 @@ def init_driver() -> webdriver.Chrome:
 
 
 def get_soup(region, driver):
-    if region.scrapeWithDriver:
-        driver.get(region.url)
-        time.sleep(2)
-        soup = BeautifulSoup(driver.page_source, "html.parser")
+    # if region.scrapeWithDriver:
+    #     driver.get(region.url)
+    #     time.sleep(2)
+    #     soup = BeautifulSoup(driver.page_source, "html.parser")
 
-    else:
-        content = requests.get(region.url)
-        soup = BeautifulSoup(content.text, "html.parser")
+    # else:
+    content = requests.get(region.url)
+    soup = BeautifulSoup(content.text, "html.parser")
     return soup
 
 
@@ -127,7 +127,8 @@ totaljson = []
 
 if __name__ == "__main__":
 
-    driver = init_driver()
+    # driver = init_driver()
+    driver = None
 
     logging.info("Starting scrape...")
     logging.info(datetime.now())
@@ -148,4 +149,4 @@ if __name__ == "__main__":
             region_status.scrapeError = True
         region_status.save()
 
-    driver.close()
+    # driver.close()
