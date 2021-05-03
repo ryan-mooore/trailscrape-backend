@@ -12,6 +12,7 @@ bs4 = "*"
 selenium = "*"
 webdriver-manager = "*"
 mongoengine = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.9"
