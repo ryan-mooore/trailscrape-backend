@@ -7,15 +7,10 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-flask = "*"
 requests = "*"
 bs4 = "*"
 selenium = "*"
-lxml = "*"
-pymongo = "*"
-dnspython = "*"
 webdriver-manager = "*"
-boto = "*"
 mongoengine = "*"
 
 [requires]
