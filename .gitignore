@@ -1,3 +1,15 @@
+# lockfiles
 Pipfile.lock
-.env
+
+# development
 dev
+
+# secrets
+.env
+
+# binaries
+*.pyc
+__pycache__
+
+# misc
+.vscode
