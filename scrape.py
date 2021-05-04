@@ -13,6 +13,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from documents import documents
 from scrapers.common import trailforks
+from random import random
 
 logging.basicConfig(level=20)
 
@@ -24,14 +25,14 @@ def init_driver() -> webdriver.Chrome:
 
 
 def get_soup(region, driver):
-    # if region.scrapeWithDriver:
-    #     driver.get(region.url)
-    #     time.sleep(2)
-    #     soup = BeautifulSoup(driver.page_source, "html.parser")
+    if region.scrapeWithDriver:
+        driver.get(region.url)
+        time.sleep(2)
+        soup = BeautifulSoup(driver.page_source, "html.parser")
 
-    # else:
-    content = requests.get(region.url)
-    soup = BeautifulSoup(content.text, "html.parser")
+    else:
+        content = requests.get(region.url)
+        soup = BeautifulSoup(content.text, "html.parser")
     return soup
 
 
@@ -118,8 +119,14 @@ def create_status(region, region_status, driver) -> Dict:
     if region.hasUplifts:
         if region.includes["park"]["liftStatus"]:
             if hasattr(region, "liftUrl"):
-                content = requests.get(region.liftUrl)
-                soup = BeautifulSoup(content.text, "html.parser")
+                if region.scrapeWithDriver:
+                    driver.get(region.liftUrl)
+                    time.sleep(2)
+                    soup = BeautifulSoup(driver.page_source, "html.parser")
+
+                else:
+                    content = requests.get(region.liftUrl)
+                    soup = BeautifulSoup(content.text, "html.parser")
             region_status.liftIsOpen = scraper_module.get_lift_status(
                 soup)
         else:
@@ -131,8 +138,7 @@ totaljson = []
 
 if __name__ == "__main__":
 
-    # driver = init_driver()
-    driver = None
+    driver = init_driver()
 
     logging.info("Starting scrape...")
     logging.info(datetime.now())
@@ -153,4 +159,4 @@ if __name__ == "__main__":
             region_status.scrapeError = True
         region_status.save()
 
-    # driver.close()
+    driver.close()
