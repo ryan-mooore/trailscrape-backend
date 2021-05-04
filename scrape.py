@@ -117,6 +117,9 @@ def create_status(region, region_status, driver) -> Dict:
 
     if region.hasUplifts:
         if region.includes["park"]["liftStatus"]:
+            if hasattr(region, "liftUrl"):
+                content = requests.get(region.liftUrl)
+                soup = BeautifulSoup(content.text, "html.parser")
             region_status.liftIsOpen = scraper_module.get_lift_status(
                 soup)
         else:

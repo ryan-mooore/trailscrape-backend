@@ -52,3 +52,12 @@ def get_trails(soup):
         trail_id += 1
 
     return trails
+
+def get_lift_status(soup):
+
+    text = soup.find('div', class_=re.compile("description main-content")).find_all('p')
+    for string in text:
+        string = repr(string).upper()
+        if 'CLOSED' in string: return False
+        if 'OPEN' in string: return True
+    return None

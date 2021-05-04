@@ -11,6 +11,7 @@ class Region(Document):
     ID = StringField(required=True, unique=True, max_length=3)
     name = StringField(required=True)
     url = URLField(required=True)
+    liftUrl = URLField()
     trailforksRegionID = StringField(required=True)
     hasUplifts = BooleanField(required=True)
     includes = DictField(required=True)
