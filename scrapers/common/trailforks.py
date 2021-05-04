@@ -41,7 +41,7 @@ def scrape(region_id):
             grade = None
 
         raw_status = row.find_all("td")[2].span.get("title").upper()
-        status = raw_status is not "CLOSED / RED"
+        status = raw_status != "CLOSED / RED"
 
         trails.append({
             "id": id,
