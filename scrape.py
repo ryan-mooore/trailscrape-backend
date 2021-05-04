@@ -154,6 +154,7 @@ if __name__ == "__main__":
         try:
             region_status = create_status(region, region_status, driver)
             logging.info(f"Scraped {region.name}")
+            region_status.scrapeError = False
         except Exception as e:
             print(f"Error while scraping {region.name}: {e}")
             region_status.scrapeError = True
