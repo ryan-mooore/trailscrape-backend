@@ -1,3 +1,4 @@
+import re
 
 def get_trails(soup):
 
@@ -10,23 +11,19 @@ def get_trails(soup):
         #skip table header
         if row.th:
             continue
-        name = row.find_all("td")[0].a.string
+        name = row.find("td").a.string
         status_src = row.find_all("td")[1].img.get("src")
-    if not trails:
-        raise IndexError
 
         #closed-icon or open-icon
-        raw_status = craigieburn.parse(
+        raw_status = re.search(
             r".+\/(\w+)-icon.png",
             status_src
-        )[0].upper()
+        ).group(1).upper()
 
         parsed_status = None
 
         if raw_status == "OPEN":
             status = True
-            craigieburn.parkIsOpen = True
-        
         if raw_status == "CLOSED":
             status = False
 
