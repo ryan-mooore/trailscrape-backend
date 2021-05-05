@@ -72,6 +72,8 @@ def create_status(region, region_status, driver) -> Dict:
             for tf_trail in tf_trails:
                 if trail["id"] == tf_trail["id"]:
                     trail["grade"] = tf_trail["grade"]
+                    break
+            else: trail["grade"] = 2
 
     if region.includes["trails"]["status"] and region.includes["park"]["parkStatus"]:
         region_status.parkIsOpen = scraper_module.get_park_status(soup)
@@ -158,6 +160,7 @@ if __name__ == "__main__":
 
         try:
             region_status = create_status(region, region_status, driver)
+
             logging.info(f"Scraped {region.name}")
             region_status.scrapeError = False
         except Exception as e:

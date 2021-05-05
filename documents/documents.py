@@ -2,7 +2,7 @@ from json import load
 from os import path, environ
 from mongoengine import connect
 from mongoengine.document import Document
-from mongoengine.fields import (BooleanField, DictField, ListField,
+from mongoengine.fields import (BooleanField, DictField, DynamicField, ListField,
                                 StringField, URLField)
 
 client = connect(db="trailscrape", host=environ['MONGODB_URI'] if environ['MONGODB_URI'] else 'localhost', port=27017)
@@ -12,7 +12,7 @@ class Region(Document):
     name = StringField(required=True)
     url = URLField(required=True)
     liftUrl = URLField()
-    trailforksRegionID = StringField(required=True)
+    trailforksRegionID = DynamicField(required=True)
     hasUplifts = BooleanField(required=True)
     includes = DictField(required=True)
     scrapeWithDriver = BooleanField(required=True)
