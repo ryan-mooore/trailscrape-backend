@@ -136,6 +136,8 @@ def create_status(region, region_status, driver) -> Dict:
                     soup = BeautifulSoup(content.text, "html.parser")
             region_status.liftIsOpen = scraper_module.get_lift_status(
                 soup)
+            if not region_status.parkIsOpen:
+                region_status.liftIsOpen = False
         else:
             region_status.liftIsOpen = None
     return region_status
