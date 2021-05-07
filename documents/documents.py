@@ -32,5 +32,3 @@ def create_regions():
         for region in load(regions):
             entry = Region(**region)
             entry.save()
-
-create_regions()
