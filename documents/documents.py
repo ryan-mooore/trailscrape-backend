@@ -5,7 +5,7 @@ from mongoengine.document import Document
 from mongoengine.fields import (BooleanField, DictField, DynamicField, ListField,
                                 StringField, URLField)
 
-client = connect(db="trailscrape", host=environ['MONGODB_URI'] if hasattr(environ, "W_MONGODB_URI") else 'localhost', port=27017)
+client = connect(db="trailscrape", host=environ['MONGODB_URI'] if hasattr(environ, "MONGODB_URI") else 'localhost', port=27017)
 
 class Region(Document):
     ID = StringField(required=True, unique=True, max_length=3)
