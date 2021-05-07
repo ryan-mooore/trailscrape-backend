@@ -3,7 +3,7 @@ from os import path, environ
 from mongoengine import connect
 from mongoengine.document import Document
 from mongoengine.fields import (BooleanField, DictField, DynamicField, ListField,
-                                StringField, URLField)
+                                StringField, URLField, DateTimeField)
 
 client = connect(db="trailscrape", host=environ['MONGODB_URI'] if 'MONGODB_URI' in environ else 'localhost', port=27017)
 
@@ -24,6 +24,7 @@ class RegionStatus(Document):
     trails = ListField()
     parkIsOpen = BooleanField()
     liftIsOpen = BooleanField()
+    scrapeTime = DateTimeField()
 
 
 def create_regions():
