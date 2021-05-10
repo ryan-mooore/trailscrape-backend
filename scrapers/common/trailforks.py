@@ -25,6 +25,7 @@ def scrape(region_ids):
     ]
 
     trails = []
+    
     if type(region_ids) == str:
         region_ids = [region_ids]
     for region_id in region_ids:
@@ -32,7 +33,16 @@ def scrape(region_ids):
         id = 0
 
         for row in table.find_all("tr"):
-            name = row.find_all("td")[1].a.string
+            a = row.find_all("td")[1].a
+            
+            name = a.string
+            trail_url = a.get("href")
+
+            tf_id = None
+            try: 
+                tf_id = int(re.match(r"#(\d+) - ", BeautifulSoup(requests.get(trail_url).text, "html.parser").find("li", class_="grey2 small").text).group(1))
+            except Exception:
+                print(name, "has no trail id")
 
             raw_grade = row.find_all("td")[0].span.get("title").upper()
             res = re.match(r"(?:(.+)\s\/.+|(.+):\s.+)|,\s(.+)", raw_grade)
@@ -42,14 +52,15 @@ def scrape(region_ids):
             else:
                 grade = None
 
-            raw_status = row.find_all("td")[2].span.get("title").upper()
-            status = raw_status != "CLOSED / RED"
+            report = row.find_all("td")[2]
+            status = report.span.get("title").upper() != "CLOSED / RED"
 
             trails.append({
                 "id": id,
                 "name": name,
                 "grade": grade,
-                "isOpen": status
+                "isOpen": status,
+                "trailforksID": tf_id
             })
             id += 1
 
