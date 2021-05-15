@@ -37,6 +37,7 @@ def scrape(region_ids):
             
             name = a.string
             trail_url = a.get("href")
+            trailforks_name = re.match(r"https://www.trailforks.com/trails/(.+)/$", trail_url).group(1)
 
             tf_id = None
             try: 
@@ -60,7 +61,8 @@ def scrape(region_ids):
                 "name": name,
                 "grade": grade,
                 "isOpen": status,
-                "trailforksID": tf_id
+                "trailforksID": tf_id,
+                "trailforksName": trailforks_name
             })
             id += 1
 

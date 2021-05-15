@@ -58,6 +58,7 @@ def create_status(region, region_status, driver) -> Dict:
                 match = matches[0]
                 tf_trails[tf_trail_names.index(match)]["id"] = trail["id"]
                 trail["trailforksID"] = tf_trails[tf_trail_names.index(match)]["trailforksID"]
+                trail["trailforksName"] = tf_trails[tf_trail_names.index(match)]["trailforksName"]
                 
     else:
         region_status.trails = tf_trails
