@@ -38,10 +38,10 @@ def get_soup(region, driver):
 
 def create_status(region, region_status, driver) -> Dict:
 
-    scraper_module = importlib.import_module(
-        "scrapers." + region.ID)
+    if region.url:
+        soup = get_soup(region, driver)
 
-    soup = get_soup(region, driver)
+    scraper_module = None
 
     tf_trails = trailforks.scrape(region.trailforksRegionID)
     tf_trail_names = [trail["name"] for trail in tf_trails]
@@ -49,6 +49,9 @@ def create_status(region, region_status, driver) -> Dict:
     region_status.parkIsOpen = True
 
     if region.includes["trails"]["name"] or region.includes["trails"]["grade"] or region.includes["trails"]["status"]:
+        scraper_module = importlib.import_module(
+        "scrapers." + region.ID)
+
         region_status.trails = scraper_module.get_trails(soup)
     
 
