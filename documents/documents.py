@@ -10,7 +10,7 @@ client = connect(db="trailscrape", host=environ['MONGODB_URI'] if 'MONGODB_URI' 
 class Region(Document):
     ID = StringField(required=True, unique=True, max_length=3)
     name = StringField(required=True)
-    url = URLField(required=True)
+    url = URLField()
     liftUrl = URLField()
     trailforksRegionID = DynamicField(required=True)
     hasUplifts = BooleanField(required=True)
