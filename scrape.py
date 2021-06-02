@@ -79,7 +79,7 @@ def create_status(region, region_status, driver) -> Dict:
                     break
             else: trail["grade"] = 2
 
-    if region.includes["trails"]["status"] and region.includes["park"]["parkStatus"]:
+    if region.includes["park"]["parkStatus"]:
         region_status.parkIsOpen = scraper_module.get_park_status(soup)
 
     # if website contains trailStatus but not parkStatus:
