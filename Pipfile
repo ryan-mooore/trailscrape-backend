@@ -3,9 +3,6 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
-[dev-packages]
-pylint = "*"
-
 [packages]
 requests = "*"
 bs4 = "*"
@@ -16,3 +13,6 @@ dnspython = "*"
 
 [requires]
 python_version = "3.9"
+
+[dev-packages]
+mypy = "*"

@@ -11,6 +11,4 @@ regions.json
 # binaries
 *.pyc
 __pycache__
-
-# misc
-.vscode
+.mypy_cache
