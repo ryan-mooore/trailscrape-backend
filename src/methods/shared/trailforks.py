@@ -27,11 +27,11 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
     regionIDs = region.methodInfo["regionID"] if type(region.methodInfo["regionID"]) is list else [region.methodInfo["regionID"]]
     for regionID in regionIDs:
         trailforks_region = TrailforksRegion.objects(str_ID=regionID)[0]
-        for trail in get_api_trails(trailforks_region.trails)["rmsD"]["tracks"]["rmsD"]["tracks"]:
+        for trail in get_api_trails(trailforks_region.trails.keys())["rmsD"]["tracks"]["rmsD"]["tracks"]:
             trails.append(
                 {
                     "name": trail["name"],
-                    "trailforksName": trail["name"],
+                    "trailforksName": trailforks_region.trails[trail["id"]],
                     "grade": gradeMap[trail["difficulty"]],
                     "isOpen": bool(trail["colour"] != "#be0014"),
                     "trailforksID": trail["id"],
