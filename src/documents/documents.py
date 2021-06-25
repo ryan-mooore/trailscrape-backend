@@ -3,7 +3,7 @@ from os import environ
 from mongoengine import connect
 from mongoengine.document import Document
 from mongoengine.fields import (BooleanField, DictField, DynamicField, ListField,
-                                StringField, URLField, DateTimeField, IntField)
+                                StringField, DateTimeField, IntField)
 
 client = connect(db="trailscrape", host=environ['MONGODB_URI'] if 'MONGODB_URI' in environ else 'localhost', port=27017)
 
@@ -26,4 +26,4 @@ class RegionStatus(Document):
 class TrailforksRegion(Document):
     str_ID: str = StringField(required=True)
     num_ID: int = IntField(required=True)
-    trails: list = ListField()
+    trails: dict = DictField()

@@ -6,25 +6,28 @@ import re
 
 logging.basicConfig(level=20)
 
-def get_trail_ids(region_name: str) -> list[int]:
+def get_trail_ids(region_name: str) -> dict[int, str]:
     content = requests.get(f"https://www.trailforks.com/region/{region_name}/trails")
     soup = BeautifulSoup(content.text, "html.parser")
 
-    return [
-        int(
+    return {
+        tr
+        .find("div", class_="star-rating")
+        .ul
+        .get("id")
+        .split("_")[1]
+        :
+        re.match(r"https:\/\/www.trailforks.com\/trails\/(.+)\/",
             tr
-            .find("div", class_="star-rating")
-            .ul
-            .get("id")
-            .split("_")[1]
-        ) 
+            .find("a", class_="green").get("href")
+        ).group(1)
         for tr in (
             soup
             .find("table", {"id": "trails_table"})
             .tbody
             .find_all("tr")
         )
-    ]
+    }
 
 def get_numeric_id(region_name: str) -> int:
     content = requests.get(f"https://www.trailforks.com/region/{region_name}/")
@@ -48,10 +51,12 @@ if __name__ == "__main__":
                 trailforks_region = TrailforksRegion(str_ID=regionID)
                 existing_trails = set()
             
-            new_trails = set(get_trail_ids(regionID))
-            trailforks_region.trails = list(new_trails)
+            new_trails = get_trail_ids(regionID)
+            trailforks_region.trails = new_trails
             trailforks_region.num_ID = get_numeric_id(regionID)
             trailforks_region.save()
+
+            new_trails = set(new_trails)
 
             logging.info(
                 f"Updated trails for {regionID} "

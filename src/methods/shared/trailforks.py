@@ -13,6 +13,16 @@ def get_api_region(region_id: int, since:int=0, api_key: str = "docs") -> dict[s
     return requests.get(f"https://www.trailforks.com/api/1/region_status?rids={region_id}&since={since}&api_key={api_key}").json()
 
 def get_trails(region: SimpleNamespace) -> list[dict]:
+
+    gradeMap = {
+        "2": 1, # beginner
+        "3": 2, # easy
+        "4": 3, # intermediate
+        "11": 4, # advanced
+        "5": 5, # expert
+        "6": 6 # extreme / dbl black
+    }
+
     trails = []
     regionIDs = region.methodInfo["regionID"] if type(region.methodInfo["regionID"]) is list else [region.methodInfo["regionID"]]
     for regionID in regionIDs:
@@ -22,7 +32,7 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
                 {
                     "name": trail["name"],
                     "trailforksName": trail["name"],
-                    "grade": int(trail["difficulty"]),
+                    "grade": gradeMap[trail["difficulty"]],
                     "isOpen": bool(trail["colour"] != "#be0014"),
                     "trailforksID": trail["id"],
                 }
