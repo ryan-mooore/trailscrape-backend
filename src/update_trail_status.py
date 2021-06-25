@@ -23,6 +23,7 @@ if __name__ == "__main__":
                 "api": api
             }[region.method].main(region).items():
                 setattr(region_status, k, v)
+            region_status.scrapeTime = datetime.utcnow()
         except Exception as e:
             print(f"Error while scraping {region.name}: {e}")
             region_status.scrapeError = True
