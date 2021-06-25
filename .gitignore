@@ -1,9 +1,4 @@
-# lockfiles
-Pipfile.lock
-
 # development
-dev
-regions.json
 
 # secrets
 .env
