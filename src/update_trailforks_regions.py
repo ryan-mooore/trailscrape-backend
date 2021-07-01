@@ -6,6 +6,7 @@ import re
 
 logging.basicConfig(level=20)
 
+
 def get_trail_ids(region_name: str) -> dict[int, str]:
     content = requests.get(f"https://www.trailforks.com/region/{region_name}/trails")
     soup = BeautifulSoup(content.text, "html.parser")
@@ -37,7 +38,7 @@ def get_numeric_id(region_name: str) -> int:
 
 if __name__ == "__main__":
     logging.info("Updating trails in Trailforks regions...")
-    for region in Region.objects:
+    for region in Region.bike.objects:
         try:
             trailforksID = region.methodInfo["regionID"]
         except KeyError: continue

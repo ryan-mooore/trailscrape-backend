@@ -25,5 +25,12 @@
             "program": "${workspaceFolder}/src/update_regions.py",
             "console": "integratedTerminal"
         },
+        {
+            "name": "Create Status Template",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/create_trail_status_template.py",
+            "console": "integratedTerminal"
+        }
     ]
 }
