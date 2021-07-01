@@ -17,7 +17,6 @@ def get_soup(region: SimpleNamespace):
     if region["methodInfo"]["withChromedriver"]:
         driver = get_driver()
         driver.get(region["methodInfo"]["url"])
-        sleep(2)
         return BS(driver.page_source, "html.parser")
 
     else:

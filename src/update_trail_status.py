@@ -7,13 +7,12 @@ import logging
 logging.basicConfig(level=20)
 
 if __name__ == "__main__":
-    region_status_json = {}
-    region = db.region.find_one()
-    region_status = db.region_status.find_one()
-    for activity, locations in region["activities"].items():
+    regions = db.regions.find_one()
+    status = db.status.find_one()
+    for activity, locations in regions["activities"].items():
         for location, parks in locations.items():
             for park_ID, park in parks.items():
-                status = {
+                new_status = {
                     "scrapeError": False
                 }
                 try:
@@ -24,9 +23,10 @@ if __name__ == "__main__":
                         "copyFromTrailforks": copy_from_trailforks,
                         "api": api
                     }[park["method"]].main(park_ID, park).items():
-                        status[k] = v
+                        new_status[k] = v
                 except Exception as e:
                     print(f"Error while scraping {park['name']}: {e}")
-                    region_status["activities"][activity][location][park_ID].scrapeError = True
+                    status["activities"][activity][location][park_ID].scrapeError = True
                 else:
-                    region_status["activities"][activity][location][park_ID] = status
+                    status["activities"][activity][location][park_ID] = new_status
+    db.status.update_one({"_id": status["_id"]}, {"$set": status})
