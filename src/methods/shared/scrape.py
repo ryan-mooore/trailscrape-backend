@@ -14,16 +14,15 @@ def get_driver() -> webdriver.Chrome:
 
 def get_soup(region: SimpleNamespace):
 
-    if region.methodInfo["withChromedriver"]:
+    if region["methodInfo"]["withChromedriver"]:
         driver = get_driver()
-        driver.get(region.methodInfo["url"])
-        sleep(2)
+        driver.get(region["methodInfo"]["url"])
         return BS(driver.page_source, "html.parser")
 
     else:
-        content = requests.get(region.methodInfo["url"])
+        content = requests.get(region["methodInfo"]["url"])
         return BS(content.text, "html.parser")
 
-def get_scraper(region: SimpleNamespace) -> ModuleType:
+def get_scraper(park_ID: SimpleNamespace) -> ModuleType:
     return importlib.import_module(
-    "scrapers." + region.ID)
+    "scrapers." + park_ID)

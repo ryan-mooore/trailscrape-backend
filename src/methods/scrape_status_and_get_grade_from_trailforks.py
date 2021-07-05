@@ -3,22 +3,23 @@ from .shared import scrape, trailforks
 from difflib import get_close_matches
 import logging
 
-def main(region: SimpleNamespace) -> dict:
+def main(park_ID, park: SimpleNamespace) -> dict:
     scrape_error = False
     trails = None
+    name = park["name"]
     try:
-        logging.info(f"{region.name}:Getting scraping data...")
-        scraper = scrape.get_scraper(region)
-        soup = scrape.get_soup(region)
-        logging.info(f"{region.name}:Scraping (Trail status)...")
+        logging.info(f"{name}:Getting scraping data...")
+        scraper = scrape.get_scraper(park_ID)
+        soup = scrape.get_soup(park)
+        logging.info(f"{name}:Scraping (Trail status)...")
         trails = scraper.get_trails(soup)
-        logging.info(f"{region.name}:Making Trailforks api call (Park status)...")
-        park_status = trailforks.get_park_status(region)
+        logging.info(f"{name}:Making Trailforks api call (Park status)...")
+        park_status = trailforks.get_park_status(park)
 
-        logging.info(f"{region.name}:Making Trailforks api call (Trail status)...")
-        trailforks_trails = trailforks.get_trails(region)
+        logging.info(f"{name}:Making Trailforks api call (Trail status)...")
+        trailforks_trails = trailforks.get_trails(park)
         trailforks_trail_names = [trail["name"] for trail in trailforks_trails]
-        logging.info(f"{region.name}:Matching trails to Trailforks trails...")
+        logging.info(f"{name}:Matching trails to Trailforks trails...")
         for trail in trails:
             matches = get_close_matches(trail["name"], trailforks_trail_names)
             if matches:
@@ -28,7 +29,7 @@ def main(region: SimpleNamespace) -> dict:
 
     except Exception as e:
         scrape_error = True
-    logging.info(f"{region.name}:Done")
+    logging.info(f"{name}:Done")
 
     return {
         "parkIsOpen": park_status,

@@ -1,8 +1,8 @@
 from types import SimpleNamespace
-from documents.documents import TrailforksRegion
 from typing import Any
 import requests
 import logging
+from documents.documents import db
 
 def get_api_trails(trail_ids: list[int]) -> dict[str, Any]:
     logging.info(f"TF API:requesting trails {trail_ids}")
@@ -24,14 +24,14 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
     }
 
     trails = []
-    regionIDs = region.methodInfo["regionID"] if type(region.methodInfo["regionID"]) is list else [region.methodInfo["regionID"]]
+    regionIDs = region["methodInfo"]["regionID"] if type(region["methodInfo"]["regionID"]) is list else [region["methodInfo"]["regionID"]]
     for regionID in regionIDs:
-        trailforks_region = TrailforksRegion.objects(str_ID=regionID)[0]
-        for trail in get_api_trails(trailforks_region.trails.keys())["rmsD"]["tracks"]["rmsD"]["tracks"]:
+        trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})
+        for trail in get_api_trails(trailforks_region["trails"].keys())["rmsD"]["tracks"]["rmsD"]["tracks"]:
             trails.append(
                 {
                     "name": trail["name"],
-                    "trailforksName": trailforks_region.trails[trail["id"]],
+                    "trailforksName": trailforks_region["trails"][trail["id"]],
                     "grade": gradeMap[trail["difficulty"]],
                     "isOpen": bool(trail["colour"] != "#be0014"),
                     "trailforksID": trail["id"],
@@ -40,9 +40,9 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
     return trails
 
 def get_park_status(region: SimpleNamespace) -> bool:
-    regionIDs = region.methodInfo["regionID"] if type(region.methodInfo["regionID"]) is list else [region.methodInfo["regionID"]]
+    regionIDs = region["methodInfo"]["regionID"] if type(region["methodInfo"]["regionID"]) is list else [region["methodInfo"]["regionID"]]
     open_regions = []
     for regionID in regionIDs:
-        trailforks_region = TrailforksRegion.objects(str_ID=regionID)[0]
-        open_regions.append(get_api_region(trailforks_region.num_ID)["data"]["updates"]["regions_info"]["rows"][0][1] != 4)
+        trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})
+        open_regions.append(get_api_region(trailforks_region["num_ID"])["data"]["updates"]["regions_info"]["rows"][0][1] != 4)
     return True in open_regions
