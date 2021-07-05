@@ -24,6 +24,7 @@ if __name__ == "__main__":
                         "api": api
                     }[park["method"]].main(park_ID, park).items():
                         new_status[k] = v
+                        new_status["scrapeTime"] = datetime.utcnow()
                 except Exception as e:
                     print(f"Error while scraping {park['name']}: {e}")
                     status["activities"][activity][location][park_ID].scrapeError = True
