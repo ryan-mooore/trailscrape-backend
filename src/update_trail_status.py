@@ -10,8 +10,8 @@ if __name__ == "__main__":
     regions = db.regions.find_one()
     status = db.status.find_one()
     for activity, locations in regions["activities"].items():
-        for location, parks in locations.items():
-            for park_ID, park in parks.items():
+        for region_ID, region in locations.items():
+            for park_ID, park in region["parks"].items():
                 new_status = {
                     "scrapeError": False
                 }
@@ -27,7 +27,7 @@ if __name__ == "__main__":
                         new_status["scrapeTime"] = datetime.utcnow()
                 except Exception as e:
                     print(f"Error while scraping {park['name']}: {e}")
-                    status["activities"][activity][location][park_ID].scrapeError = True
+                    status["activities"][activity][region_ID][park_ID].scrapeError = True
                 else:
-                    status["activities"][activity][location][park_ID] = new_status
+                    status["activities"][activity][region_ID][park_ID] = new_status
     db.status.update_one({"_id": status["_id"]}, {"$set": status})

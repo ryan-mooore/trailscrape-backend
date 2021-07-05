@@ -1,194 +1,109 @@
-<<<<<<< HEAD
-[
-  {
-    "ID": "pht",
-    "name": "Port Hills Trails",
-    "hasUplifts": false,
-    "method": "scrapeStatusAndGetGradeFromTrailforks",
-    "methodInfo": {
-      "withChromedriver": false,
-      "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-      "regionID": [
-        "port-hills-west",
-        "port-hills-east"
-      ]
-    }
-  },
-  {
-    "ID": "hut",
-    "name": "Mt Hutt Bike Park",
-    "hasUplifts": false,
-    "method": "copyFromTrailforks",
-    "methodInfo": {
-      "regionID": "mt-hutt-bike-park"
-    }
-  },
-  {
-    "ID": "atx",
-    "name": "Akatrax",
-    "hasUplifts": false,
-    "method": "copyFromTrailforks",
-    "methodInfo": {
-      "regionID": "akatrax-mtb-club"
-    }
-  },
-  {
-    "ID": "cap",
-    "name": "Christchurch Adventure Park",
-    "hasUplifts": true,
-    "method": "scrapeTrails",
-    "methodInfo": {
-      "withChromedriver": true,
-      "url": "https://www.christchurchadventurepark.com/trail-information",
-      "liftUrl": "https://christchurchadventurepark.com/park-status/"
-    }
-  },
-  {
-    "ID": "cgb",
-    "name": "Craigieburn Trails",
-    "hasUplifts": false,
-    "method": "api",
-    "methodInfo": {
-      "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
-      "attributeMap": {
-        "id": "id",
-        "name": "name",
-        "openBike": "isOpen",
-        "trackGrade": "grade"
-      },
-      "filter": "showStatus"
-    }
-  },
-  {
-    "ID": "crc",
-    "name": "Crocodile XC MTB Park",
-    "hasUplifts": false,
-    "method": "scrapeParkAndGetTrailsFromTrailforks",
-    "methodInfo": {
-      "withChromedriver": true,
-      "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-      "regionID": "crocodile-xc-mtb-park"
-    }
-  },
-  {
-    "ID": "vic",
-    "name": "Victoria Park",
-    "hasUplifts": false,
-    "method": "scrapeParkAndGetTrailsFromTrailforks",
-    "methodInfo": {
-      "withChromedriver": true,
-      "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-      "regionID": "victoria-park"
-    }
-  },
-  {
-    "ID": "hvn",
-    "name": "Haven Mountain Bike Park",
-    "hasUplifts": false,
-    "method": "scrapeParkAndGetTrailsFromTrailforks",
-    "methodInfo": {
-      "withChromedriver": false,
-      "url": "https://havenmtb.org.nz/",
-      "regionID": "haven-mountain-bike-park"
-    }
-  }
-]
-=======
 {
   "activities": {
     "bike": {
       "canterbury": {
-        "pht": {
-          "name": "Port Hills Trails",
-          "hasUplifts": false,
-          "method": "scrapeStatusAndGetGradeFromTrailforks",
-          "methodInfo": {
-            "withChromedriver": false,
-            "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-            "regionID": [
-              "port-hills-west",
-              "port-hills-east"
-            ]
-          }
-        },
-        "hut": {
-          "name": "Mt Hutt Bike Park",
-          "hasUplifts": false,
-          "method": "copyFromTrailforks",
-          "methodInfo": {
-            "regionID": "mt-hutt-bike-park"
-          }
-        },
-        "atx": {
-          "name": "Akatrax",
-          "hasUplifts": false,
-          "method": "copyFromTrailforks",
-          "methodInfo": {
-            "regionID": "akatrax-mtb-club"
-          }
-        },
-        "cap": {
-          "name": "Christchurch Adventure Park",
-          "hasUplifts": true,
-          "method": "scrapeTrails",
-          "methodInfo": {
-            "withChromedriver": true,
-            "url": "https://www.christchurchadventurepark.com/trail-information",
-            "liftUrl": "https://christchurchadventurepark.com/park-status/"
-          }
-        },
-        "cgb": {
-          "name": "Craigieburn Trails",
-          "hasUplifts": false,
-          "method": "api",
-          "methodInfo": {
-            "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
-            "attributeMap": {
-              "id": "id",
-              "name": "name",
-              "openBike": "isOpen",
-              "trackGrade": "grade"
-            },
-            "filter": "showStatus"
-          }
-        },
-        "crc": {
-          "name": "Crocodile XC MTB Park",
-          "hasUplifts": false,
-          "method": "scrapeParkAndGetTrailsFromTrailforks",
-          "methodInfo": {
-            "withChromedriver": true,
-            "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-            "regionID": "crocodile-xc-mtb-park"
-          }
-        },
-        "vic": {
-          "name": "Victoria Park",
-          "hasUplifts": false,
-          "method": "scrapeParkAndGetTrailsFromTrailforks",
-          "methodInfo": {
-            "withChromedriver": true,
-            "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-            "regionID": "victoria-park"
-          }
-        },
-        "hvn": {
-          "name": "Haven Mountain Bike Park",
-          "hasUplifts": false,
-          "method": "scrapeParkAndGetTrailsFromTrailforks",
-          "methodInfo": {
-            "withChromedriver": false,
-            "url": "https://havenmtb.org.nz/",
-            "regionID": "haven-mountain-bike-park"
+        "name": "Canterbury",
+        "parks": {
+          "pht": {
+            "name": "Port Hills Trails",
+            "hasUplifts": false,
+            "method": "scrapeStatusAndGetGradeFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
+              "regionID": [
+                "port-hills-west",
+                "port-hills-east"
+              ]
+            }
+          },
+          "hut": {
+            "name": "Mt Hutt Bike Park",
+            "hasUplifts": false,
+            "method": "copyFromTrailforks",
+            "methodInfo": {
+              "regionID": "mt-hutt-bike-park"
+            }
+          },
+          "atx": {
+            "name": "Akatrax",
+            "hasUplifts": false,
+            "method": "copyFromTrailforks",
+            "methodInfo": {
+              "regionID": "akatrax-mtb-club"
+            }
+          },
+          "cap": {
+            "name": "Christchurch Adventure Park",
+            "hasUplifts": true,
+            "method": "scrapeTrails",
+            "methodInfo": {
+              "withChromedriver": true,
+              "url": "https://www.christchurchadventurepark.com/trail-information",
+              "liftUrl": "https://christchurchadventurepark.com/park-status/"
+            }
+          },
+          "cgb": {
+            "name": "Craigieburn Trails",
+            "hasUplifts": false,
+            "method": "api",
+            "methodInfo": {
+              "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
+              "attributeMap": {
+                "id": "id",
+                "name": "name",
+                "openBike": "isOpen",
+                "trackGrade": "grade"
+              },
+              "filter": "showStatus"
+            }
+          },
+          "crc": {
+            "name": "Crocodile XC MTB Park",
+            "hasUplifts": false,
+            "method": "scrapeParkAndGetTrailsFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": true,
+              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
+              "regionID": "crocodile-xc-mtb-park"
+            }
+          },
+          "vic": {
+            "name": "Victoria Park",
+            "hasUplifts": false,
+            "method": "scrapeParkAndGetTrailsFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": true,
+              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
+              "regionID": "victoria-park"
+            }
+          },
+          "hvn": {
+            "name": "Haven Mountain Bike Park",
+            "hasUplifts": false,
+            "method": "scrapeParkAndGetTrailsFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://havenmtb.org.nz/",
+              "regionID": "haven-mountain-bike-park"
+            }
           }
         }
       },
-      "otago": {}
+      "otago": {
+        "name": "Otago",
+        "parks": {}
+      }
     },
     "ski": {
-      "canterbury": {},
-      "otago": {}
+      "canterbury": {
+        "name": "Canterbury",
+        "parks": {}
+      },
+      "otago": {
+        "name": "Otago",
+        "parks": {}
+      }
     }
   }
 }
->>>>>>> development

@@ -39,8 +39,8 @@ def get_numeric_id(region_name: str) -> int:
 if __name__ == "__main__":
     logging.info("Updating trails in Trailforks regions...")
     for activity, locations in db.regions.find_one()["activities"].items():
-        for location, parks in locations.items():
-            for park_ID, park in parks.items():
+        for region_ID, region in locations.items():
+            for park_ID, park in region["parks"].items():
                 try:
                     trailforksID = park["methodInfo"]["regionID"]
                 except KeyError: continue
