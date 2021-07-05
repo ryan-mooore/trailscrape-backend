@@ -25,4 +25,4 @@ def get_soup(region: SimpleNamespace):
 
 def get_scraper(park_ID: SimpleNamespace) -> ModuleType:
     return importlib.import_module(
-    "scrapers." + park_ID)
+    "scrapers." + park_ID.replace("-", "_"))

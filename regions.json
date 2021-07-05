@@ -4,7 +4,7 @@
       "canterbury": {
         "name": "Canterbury",
         "parks": {
-          "pht": {
+          "port-hills": {
             "name": "Port Hills Trails",
             "hasUplifts": false,
             "method": "scrapeStatusAndGetGradeFromTrailforks",
@@ -17,7 +17,7 @@
               ]
             }
           },
-          "hut": {
+          "mt-hutt": {
             "name": "Mt Hutt Bike Park",
             "hasUplifts": false,
             "method": "copyFromTrailforks",
@@ -25,7 +25,7 @@
               "regionID": "mt-hutt-bike-park"
             }
           },
-          "atx": {
+          "akatrax": {
             "name": "Akatrax",
             "hasUplifts": false,
             "method": "copyFromTrailforks",
@@ -33,7 +33,7 @@
               "regionID": "akatrax-mtb-club"
             }
           },
-          "cap": {
+          "christchurch-adventure-park": {
             "name": "Christchurch Adventure Park",
             "hasUplifts": true,
             "method": "scrapeTrails",
@@ -43,7 +43,7 @@
               "liftUrl": "https://christchurchadventurepark.com/park-status/"
             }
           },
-          "cgb": {
+          "craigieburn": {
             "name": "Craigieburn Trails",
             "hasUplifts": false,
             "method": "api",
@@ -58,7 +58,7 @@
               "filter": "showStatus"
             }
           },
-          "crc": {
+          "crocodile": {
             "name": "Crocodile XC MTB Park",
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
@@ -68,7 +68,7 @@
               "regionID": "crocodile-xc-mtb-park"
             }
           },
-          "vic": {
+          "victoria-park": {
             "name": "Victoria Park",
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
@@ -78,7 +78,7 @@
               "regionID": "victoria-park"
             }
           },
-          "hvn": {
+          "haven": {
             "name": "Haven Mountain Bike Park",
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",

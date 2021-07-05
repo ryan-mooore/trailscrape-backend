@@ -27,7 +27,7 @@ if __name__ == "__main__":
                         new_status["scrapeTime"] = datetime.utcnow()
                 except Exception as e:
                     print(f"Error while scraping {park['name']}: {e}")
-                    status["activities"][activity][region_ID][park_ID].scrapeError = True
+                    status["activities"][activity][region_ID]["parks"][park_ID].scrapeError = True
                 else:
-                    status["activities"][activity][region_ID][park_ID] = new_status
+                    status["activities"][activity][region_ID]["parks"][park_ID] = new_status
     db.status.update_one({"_id": status["_id"]}, {"$set": status})
