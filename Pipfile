@@ -8,8 +8,8 @@ requests = "*"
 bs4 = "*"
 selenium = "*"
 webdriver-manager = "*"
-mongoengine = "*"
 dnspython = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.9"
