@@ -25,6 +25,7 @@ def main(park_ID, park: SimpleNamespace) -> dict:
             if matches:
                 matched_trail = next((item for item in trailforks_trails if item["name"] == matches[0]), None)
                 trail["isOpen"] = matched_trail["isOpen"]
+                trail["trailforksName"] = matched_trail["trailforksName"]
                 logging.info(f"Matched {matched_trail['name']} to {trail['name']}")
 
     except Exception as e:
