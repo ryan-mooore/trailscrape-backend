@@ -9,11 +9,12 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/src/update_trail_status.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "args": ["${input:parkID}"]
         },
         {
             "name": "Update Trailforks Regions",
-            "type": "python",
+            "type": "python"
             "request": "launch",
             "program": "${workspaceFolder}/src/update_trailforks_regions.py",
             "console": "integratedTerminal"
@@ -31,6 +32,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/src/create_trail_status_template.py",
             "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "parkID",
+            "description": "Select park to update status for",
+            "type": "promptString"
         }
     ]
 }

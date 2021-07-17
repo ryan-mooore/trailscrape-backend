@@ -20,7 +20,8 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
         "4": 3, # intermediate
         "11": 4, # advanced
         "5": 5, # expert
-        "6": 6 # extreme / dbl black
+        "6": 6, # extreme / dbl black
+        "8": None # Proline
     }
 
     trails = []

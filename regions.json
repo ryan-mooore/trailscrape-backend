@@ -1,6 +1,25 @@
 {
   "activities": {
     "bike": {
+      "bay-of-plenty": {
+        "name": "Bay of Plenty",
+        "parks": {
+          "skyline-rotorua": {
+            "name": "Skyline Rotorua",
+            "coords": {
+              "lat": -38.11,
+              "lon": 176.22
+            },
+            "hasUplifts": false,
+            "method": "scrapeGradeAndGetStatusFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://www.skyline.co.nz/en/rotorua/things-to-do/rotorua-mountain-biking/rotorua-mountain-bike-park-info",
+              "regionID": "skyline-rotorua"
+            }
+          }
+        }
+      },
       "canterbury": {
         "name": "Canterbury",
         "parks": {
@@ -124,18 +143,33 @@
       },
       "otago": {
         "name": "Otago",
-        "parks": {}
+        "parks": {
+          "skyline-queenstown": {
+            "name": "Skyline Queenstown",
+            "coords": {
+              "lat": -45.02,
+              "lon": 168.65
+            },
+            "hasUplifts": true,
+            "method": "scrapeGradeAndGetStatusFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/",
+              "regionID": "queenstown-bike-park-4524"
+            }
+          }
+        }
       }
+    }
+  },
+  "ski": {
+    "canterbury": {
+      "name": "Canterbury",
+      "parks": {}
     },
-    "ski": {
-      "canterbury": {
-        "name": "Canterbury",
-        "parks": {}
-      },
-      "otago": {
-        "name": "Otago",
-        "parks": {}
-      }
+    "otago": {
+      "name": "Otago",
+      "parks": {}
     }
   }
 }

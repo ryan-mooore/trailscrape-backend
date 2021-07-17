@@ -1,19 +1,12 @@
-from types import SimpleNamespace
 from documents.documents import db
-from methods import scrape_park_and_get_trails_from_trailforks, api, copy_from_trailforks, scrape_trails, scrape_status_and_get_grade_from_trailforks
 from datetime import datetime
 import logging
 from other import weather
+from sys import argv
+import importlib
+import re
 
 logging.basicConfig(level=20)
-
-method_map = {
-    "scrapeTrails": scrape_trails,
-    "scrapeParkAndGetTrailsFromTrailforks": scrape_park_and_get_trails_from_trailforks,
-    "scrapeStatusAndGetGradeFromTrailforks": scrape_status_and_get_grade_from_trailforks,
-    "copyFromTrailforks": copy_from_trailforks,
-    "api": api
-}
 
 if __name__ == "__main__":
     regions = db.regions.find_one()
@@ -21,11 +14,12 @@ if __name__ == "__main__":
     for activity, locations in regions["activities"].items():
         for region_ID, region in locations.items():
             for park_ID, park in region["parks"].items():
+                if argv[1] and park_ID != argv[1]: continue
                 new_status = {
                     "scrapeError": False
                 }
                 try:
-                    new_status["status"] = method_map[park["method"]].main(park_ID, park)
+                    new_status["status"] = importlib.import_module("methods." + re.sub(r"(?<!^)(?=[A-Z])", "_", park["method"]).lower()).main(park_ID, park)
                     new_status["scrapeTime"] = datetime.utcnow()
                     new_status["weather"] = {
                         "temp": weather.get_temp(**park["coords"]),

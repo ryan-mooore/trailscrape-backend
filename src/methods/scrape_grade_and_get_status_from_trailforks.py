@@ -11,12 +11,12 @@ def main(park_ID, park: SimpleNamespace) -> dict:
         logging.info(f"{name}:Getting scraping data...")
         scraper = scrape.get_scraper(park_ID)
         soup = scrape.get_soup(park)
-        logging.info(f"{name}:Scraping (Trail status)...")
+        logging.info(f"{name}:Scraping (Trail grades)...")
         trails = scraper.get_trails(soup)
         logging.info(f"{name}:Making Trailforks api call (Park status)...")
         park_status = trailforks.get_park_status(park)
 
-        logging.info(f"{name}:Making Trailforks api call (Trail grades)...")
+        logging.info(f"{name}:Making Trailforks api call (Trail status)...")
         trailforks_trails = trailforks.get_trails(park)
         trailforks_trail_names = [trail["name"] for trail in trailforks_trails]
         logging.info(f"{name}:Matching trails to Trailforks trails...")
@@ -24,7 +24,7 @@ def main(park_ID, park: SimpleNamespace) -> dict:
             matches = get_close_matches(trail["name"], trailforks_trail_names)
             if matches:
                 matched_trail = next((item for item in trailforks_trails if item["name"] == matches[0]), None)
-                trail["grade"] = matched_trail["grade"]
+                trail["isOpen"] = matched_trail["isOpen"]
                 logging.info(f"Matched {matched_trail['name']} to {trail['name']}")
 
     except Exception as e:
