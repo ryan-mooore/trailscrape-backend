@@ -14,7 +14,8 @@ if __name__ == "__main__":
     for activity, locations in regions["activities"].items():
         for region_ID, region in locations.items():
             for park_ID, park in region["parks"].items():
-                if argv[1] and park_ID != argv[1]: continue
+                try:
+                    if park_ID != argv[1]: continue
                 new_status = {
                     "scrapeError": False
                 }
