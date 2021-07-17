@@ -15,14 +15,17 @@ if __name__ == "__main__":
         for region_ID, region in locations.items():
             for park_ID, park in region["parks"].items():
                 try:
-                    if park_ID != argv[1]: continue
+                    if argv[1] and park_ID != argv[1]: continue
                 except IndexError:
                     pass
                 new_status = {
                     "scrapeError": False
                 }
                 try:
-                    new_status["status"] = importlib.import_module("methods." + re.sub(r"(?<!^)(?=[A-Z])", "_", park["method"]).lower()).main(park_ID, park)
+                    new_status["status"] = importlib.import_module(
+                        "methods." + re.sub(r"(?<!^)(?=[A-Z])", "_", park["method"])
+                        .lower()
+                    ).main(park_ID, park)
                     new_status["scrapeTime"] = datetime.utcnow()
                     new_status["weather"] = {
                         "temp": weather.get_temp(**park["coords"]),

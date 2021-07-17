@@ -138,6 +138,18 @@
               "url": "https://havenmtb.org.nz/",
               "regionID": "haven-mountain-bike-park"
             }
+          },
+          "hanmer-trails": {
+            "name": "Hanmer Trails",
+            "coords": {
+              "lat": -42.51,
+              "lon": 172.83
+            },
+            "hasUplifts": false,
+            "method": "copyFromTrailforks",
+            "methodInfo": {
+              "regionID": "hanmer-forest-park"
+            }
           }
         }
       },
@@ -156,6 +168,28 @@
               "withChromedriver": false,
               "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/",
               "regionID": "queenstown-bike-park-4524"
+            }
+          },
+          "sticky-forest": {
+            "name": "Sticky Forest",
+            "coords": {
+              "lat": -44.67,
+              "lon": 169.14
+            },
+            "method": "copyFromTrailforks",
+            "methodInfo": {
+              "regionID": "sticky-forest"
+            }
+          },
+          "7-mile": {
+            "name": "7 Mile",
+            "coords": {
+              "lat": -45.06,
+              "lon": 168.58
+            },
+            "method": "copyFromTrailforks",
+            "methodInfo": {
+              "regionID": "7-mile-riding-area"
             }
           }
         }
