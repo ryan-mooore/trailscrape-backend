@@ -6,6 +6,10 @@
         "parks": {
           "port-hills": {
             "name": "Port Hills Trails",
+            "coords": {
+              "lat": -43.59,
+              "lon": 172.68
+            },
             "hasUplifts": false,
             "method": "scrapeStatusAndGetGradeFromTrailforks",
             "methodInfo": {
@@ -19,6 +23,10 @@
           },
           "mt-hutt": {
             "name": "Mt Hutt Bike Park",
+            "coords": {
+              "lat": -43.56,
+              "lon": 171.56
+            },
             "hasUplifts": false,
             "method": "copyFromTrailforks",
             "methodInfo": {
@@ -27,6 +35,10 @@
           },
           "akatrax": {
             "name": "Akatrax",
+            "coords": {
+              "lat": -43.82,
+              "lon": 172.96
+            },
             "hasUplifts": false,
             "method": "copyFromTrailforks",
             "methodInfo": {
@@ -35,6 +47,10 @@
           },
           "christchurch-adventure-park": {
             "name": "Christchurch Adventure Park",
+            "coords": {
+              "lat": -43.61,
+              "lon": 172.64
+            },
             "hasUplifts": true,
             "method": "scrapeTrails",
             "methodInfo": {
@@ -45,6 +61,10 @@
           },
           "craigieburn": {
             "name": "Craigieburn Trails",
+            "coords": {
+              "lat": -43.21,
+              "lon": 171.70
+            },
             "hasUplifts": false,
             "method": "api",
             "methodInfo": {
@@ -60,6 +80,10 @@
           },
           "crocodile": {
             "name": "Crocodile XC MTB Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.59
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
@@ -70,6 +94,10 @@
           },
           "victoria-park": {
             "name": "Victoria Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.65
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
@@ -80,6 +108,10 @@
           },
           "haven": {
             "name": "Haven Mountain Bike Park",
+            "coords": {
+              "lat": -43.71,
+              "lon": 172.66
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
