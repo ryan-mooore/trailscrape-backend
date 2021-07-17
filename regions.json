@@ -1,11 +1,34 @@
 {
   "activities": {
     "bike": {
+      "bay-of-plenty": {
+        "name": "Bay of Plenty",
+        "parks": {
+          "skyline-rotorua": {
+            "name": "Skyline Rotorua",
+            "coords": {
+              "lat": -38.11,
+              "lon": 176.22
+            },
+            "hasUplifts": false,
+            "method": "scrapeGradeAndGetStatusFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://www.skyline.co.nz/en/rotorua/things-to-do/rotorua-mountain-biking/rotorua-mountain-bike-park-info",
+              "regionID": "skyline-rotorua"
+            }
+          }
+        }
+      },
       "canterbury": {
         "name": "Canterbury",
         "parks": {
           "port-hills": {
             "name": "Port Hills Trails",
+            "coords": {
+              "lat": -43.59,
+              "lon": 172.68
+            },
             "hasUplifts": false,
             "method": "scrapeStatusAndGetGradeFromTrailforks",
             "methodInfo": {
@@ -19,6 +42,10 @@
           },
           "mt-hutt": {
             "name": "Mt Hutt Bike Park",
+            "coords": {
+              "lat": -43.56,
+              "lon": 171.56
+            },
             "hasUplifts": false,
             "method": "copyFromTrailforks",
             "methodInfo": {
@@ -27,6 +54,10 @@
           },
           "akatrax": {
             "name": "Akatrax",
+            "coords": {
+              "lat": -43.82,
+              "lon": 172.96
+            },
             "hasUplifts": false,
             "method": "copyFromTrailforks",
             "methodInfo": {
@@ -35,6 +66,10 @@
           },
           "christchurch-adventure-park": {
             "name": "Christchurch Adventure Park",
+            "coords": {
+              "lat": -43.61,
+              "lon": 172.64
+            },
             "hasUplifts": true,
             "method": "scrapeTrails",
             "methodInfo": {
@@ -45,6 +80,10 @@
           },
           "craigieburn": {
             "name": "Craigieburn Trails",
+            "coords": {
+              "lat": -43.21,
+              "lon": 171.70
+            },
             "hasUplifts": false,
             "method": "api",
             "methodInfo": {
@@ -60,6 +99,10 @@
           },
           "crocodile": {
             "name": "Crocodile XC MTB Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.59
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
@@ -70,6 +113,10 @@
           },
           "victoria-park": {
             "name": "Victoria Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.65
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
@@ -80,6 +127,10 @@
           },
           "haven": {
             "name": "Haven Mountain Bike Park",
+            "coords": {
+              "lat": -43.71,
+              "lon": 172.66
+            },
             "hasUplifts": false,
             "method": "scrapeParkAndGetTrailsFromTrailforks",
             "methodInfo": {
@@ -92,18 +143,33 @@
       },
       "otago": {
         "name": "Otago",
-        "parks": {}
+        "parks": {
+          "skyline-queenstown": {
+            "name": "Skyline Queenstown",
+            "coords": {
+              "lat": -45.02,
+              "lon": 168.65
+            },
+            "hasUplifts": true,
+            "method": "scrapeGradeAndGetStatusFromTrailforks",
+            "methodInfo": {
+              "withChromedriver": false,
+              "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/",
+              "regionID": "queenstown-bike-park-4524"
+            }
+          }
+        }
       }
+    }
+  },
+  "ski": {
+    "canterbury": {
+      "name": "Canterbury",
+      "parks": {}
     },
-    "ski": {
-      "canterbury": {
-        "name": "Canterbury",
-        "parks": {}
-      },
-      "otago": {
-        "name": "Otago",
-        "parks": {}
-      }
+    "otago": {
+      "name": "Otago",
+      "parks": {}
     }
   }
 }

@@ -1,5 +1,3 @@
-import re
-
 area_trails = [
     "Anaconda",
     "Bowenvale Traverse",

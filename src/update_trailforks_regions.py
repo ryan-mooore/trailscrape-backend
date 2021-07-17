@@ -44,27 +44,28 @@ if __name__ == "__main__":
                 try:
                     trailforksID = park["methodInfo"]["regionID"]
                 except KeyError: continue
-                regionIDs = trailforksID if type(trailforksID) is list else [trailforksID]
+                parkIDs = trailforksID if type(trailforksID) is list else [trailforksID]
                 
-                for regionID in regionIDs:
+                for parkID in parkIDs:
                     try:
-                        trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})
-                        existing_trails = set(trailforks_region["trails"])
-                    except IndexError:
-                        trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})
+                        trailforks_park = db.trailforks_region.find_one({"str_ID": parkID})
+                        existing_trails = set(trailforks_park["trails"])
+                    except TypeError:
+                        db.trailforks_region.insert_one({"str_ID": parkID})
+                        trailforks_park = db.trailforks_region.find_one({"str_ID": parkID})
                         existing_trails = set()
                     
-                    new_trails = get_trail_ids(regionID)
-                    trailforks_region["trails"] = new_trails
-                    trailforks_region["num_ID"] = get_numeric_id(regionID)
+                    new_trails = get_trail_ids(parkID)
+                    trailforks_park["trails"] = new_trails
+                    trailforks_park["num_ID"] = get_numeric_id(parkID)
 
                     new_trails = set(new_trails)
 
                     logging.info(
-                        f"Updated trails for {regionID} "
+                        f"Updated trails for {parkID} "
                         f"({len(existing_trails ^ new_trails)} modified: "
                         f"{', '.join(str(trailID) for trailID in existing_trails ^ new_trails)})"
                     )
-                    db.trailforks_region.update_one({"_id": trailforks_region["_id"]}, {"$set": trailforks_region})
+                    db.trailforks_region.update_one({"_id": trailforks_park["_id"]}, {"$set": trailforks_park})
 
     logging.info("Done.")
