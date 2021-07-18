@@ -1,4 +1,5 @@
 #!/bin/sh
+pipenv install
 echo ----- update regions -----
 pipenv run python src/update_regions.py
 echo ----- update trailforks regions -----
