@@ -17,6 +17,10 @@ def main(park_ID, park: SimpleNamespace) -> dict:
     except Exception as e:
         scrape_error = True
     logging.info(f"{name}:Done")
+
+    if not park_status:
+        for trail in trails:
+            trail["isOpen"] = False
     
     return {
         "parkIsOpen": park_status,

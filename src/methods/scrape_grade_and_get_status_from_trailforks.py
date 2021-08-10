@@ -28,6 +28,10 @@ def main(park_ID, park: SimpleNamespace) -> dict:
                 trail["trailforksName"] = matched_trail["trailforksName"]
                 logging.info(f"Matched {matched_trail['name']} to {trail['name']}")
 
+        if not park_status:
+            for trail in trails:
+                trail["isOpen"] = False
+
     except Exception as e:
         scrape_error = True
     logging.info(f"{name}:Done")
