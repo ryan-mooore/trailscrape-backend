@@ -12,7 +12,7 @@
             },
             "hasUplifts": false,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "scrapeGradeAndGetStatusFromTrailforks",
                 "info": {
                   "withChromedriver": false,
@@ -41,7 +41,7 @@
             },
             "hasUplifts": false,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "scrapeStatusAndGetGradeFromTrailforks",
                 "info": {
                   "withChromedriver": false,
@@ -71,7 +71,7 @@
             },
             "hasUplifts": false,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "copyFromTrailforks",
                 "info": {
                   "regionID": "mt-hutt-bike-park"
@@ -93,7 +93,7 @@
             },
             "hasUplifts": false,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "copyFromTrailforks",
                 "info": {
                   "regionID": "akatrax-mtb-club"
@@ -115,7 +115,7 @@
             },
             "hasUplifts": true,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "scrapeTrails",
                 "info": {
                   "withChromedriver": true,
@@ -146,7 +146,7 @@
             },
             "hasUplifts": false,
             "methods": {
-              "trail": {
+              "trails": {
                 "method": "api",
                 "info": {
                   "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
@@ -174,7 +174,7 @@
           },
           "hasUplifts": false,
           "methods": {
-            "trail": {
+            "trails": {
               "method": "copyFromTrailforks",
               "info": {
                 "regionID": "crocodile-xc-mtb-park"
@@ -197,7 +197,7 @@
           },
           "hasUplifts": false,
           "methods": {
-            "trail": {
+            "trails": {
               "method": "copyFromTrailforks",
               "info": {
                 "regionID": "victoria-park"
@@ -220,7 +220,7 @@
           },
           "hasUplifts": false,
           "methods": {
-            "trail": {
+            "trails": {
               "method": "copyFromTrailforks",
               "info": {
                 "regionID": "hanmer-forest-park"
@@ -248,7 +248,7 @@
         },
         "hasUplifts": true,
         "methods": {
-          "trail": {
+          "trails": {
             "method": "scrapeGradeAndGetStatusFromTrailforks",
             "info": {
               "withChromedriver": false,
@@ -270,7 +270,7 @@
           "lon": 169.14
         },
         "methods": {
-          "trail": {
+          "trails": {
             "method": "copyFromTrailforks",
             "info": {
               "regionID": "sticky-forest"
@@ -291,7 +291,7 @@
           "lon": 168.58
         },
         "methods": {
-          "trail": {
+          "trails": {
             "method": "copyFromTrailforks",
             "info": {
               "regionID": "7-mile-riding-area"

@@ -26,6 +26,7 @@ if __name__ == "__main__":
                     if argv[1] and park_ID != argv[1]: continue
                 except IndexError:
                     pass
+                log.push()
                 log.info(f"Updating {park['name']}...").add()
                 new_status: dict = {}
                 try:
@@ -37,7 +38,7 @@ if __name__ == "__main__":
                         log.sub().info(f"{status_type.title()} status: Done")
                     if not new_status["park"]:
                         log.info("Park is closed. Setting all trails to closed...")
-                        for trail in new_status["trail"]:
+                        for trail in new_status["trails"]:
                             trail["isOpen"] = False
                     log.info("Setting scrape information...")
                     new_status["scrapeError"] = False
@@ -49,10 +50,10 @@ if __name__ == "__main__":
                     }
                     log.sub()
                 except Exception as e:
-                    log.sub().error(f"Error while scraping {park['name']}: {e}")
+                    log.pop().error(f"Error while scraping {park['name']}: {e}")
                     status["activities"][activity][region_ID]["parks"][park_ID]["scrapeError"] = True
                 else:
-                    status["activities"][activity][region_ID]["parks"][park_ID] = new_status
+                    status["activities"][activity][region_ID]["parks"][park_ID]["status"] = new_status
                     log.info(f"{park['name']}: Done")
             log.sub().info(f"{region['name']} parks: Done")
         log.sub().info(f"{activity.title()} regions: Done")

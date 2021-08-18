@@ -41,7 +41,7 @@ if __name__ == "__main__":
         for region_ID, region in locations.items():
             for park_ID, park in region["parks"].items():
                 try:
-                    trailforksID = park["methods"]["trail"]["info"]["regionID"]
+                    trailforksID = park["methods"]["trails"]["info"]["regionID"]
                 except KeyError: continue
                 log.info(f"Finding trailforks regions at {park_ID}...").add()
                 trailforks_region_IDs = trailforksID if type(trailforksID) is list else [trailforksID]
