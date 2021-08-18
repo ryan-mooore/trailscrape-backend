@@ -40,6 +40,9 @@ def get_trails(soup):
 
         if raw_status == "CLOSED":
             status = False
+        
+        if raw_status == "ON HOLD":
+            status = "on hold"
 
         # Return #
         trails.append({
