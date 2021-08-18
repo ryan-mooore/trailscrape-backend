@@ -30,6 +30,7 @@ if __name__ == "__main__":
                 log.push()
                 log.info(f"Updating {park['name']}...").add()
                 new_status: dict = {}
+                info: dict = {}
                 try:
                     for status_type, method in park["methods"].items():
                         log.info(f"Updating {status_type.title()} status...").add()
@@ -42,10 +43,10 @@ if __name__ == "__main__":
                         for trail in new_status["trails"]:
                             trail["isOpen"] = False
                     log.info("Setting scrape information...")
-                    new_status["scrapeError"] = False
-                    new_status["scrapeTime"] = datetime.utcnow()
+                    info["scrapeError"] = False
+                    info["scrapeTime"] = datetime.utcnow()
                     log.info("Updating weather...")
-                    new_status["weather"] = {
+                    weather_info = {
                         "temp": weather.get_temp(**park["coords"]),
                         "conditions": weather.get_conditions(**park["coords"])
                     }
@@ -54,7 +55,9 @@ if __name__ == "__main__":
                     log.pop().error(f"Error while scraping {park['name']}: {e}")
                     status["activities"][activity][region_ID]["parks"][park_ID]["scrapeError"] = True
                 else:
+                    status["activities"][activity][region_ID]["parks"][park_ID].update(info)
                     status["activities"][activity][region_ID]["parks"][park_ID]["status"] = new_status
+                    status["activities"][activity][region_ID]["parks"][park_ID]["weather"] = weather_info
                     log.info(f"{park['name']}: Done")
             log.sub().info(f"{region['name']} parks: Done")
         log.sub().info(f"{activity.title()} regions: Done")
