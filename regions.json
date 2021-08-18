@@ -164,157 +164,157 @@
                 "info": {}
               }
             }
-          }
-        },
-        "crocodile": {
-          "name": "Crocodile XC MTB Park",
-          "coords": {
-            "lat": -43.60,
-            "lon": 172.59
           },
-          "hasUplifts": false,
-          "methods": {
-            "trails": {
-              "method": "copyFromTrailforks",
-              "info": {
-                "regionID": "crocodile-xc-mtb-park"
-              }
+          "crocodile": {
+            "name": "Crocodile XC MTB Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.59
             },
-            "park": {
-              "method": "scrapePark",
-              "info": {
-                "withChromedriver": true,
-                "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "crocodile-xc-mtb-park"
+                }
+              },
+              "park": {
+                "method": "scrapePark",
+                "info": {
+                  "withChromedriver": true,
+                  "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+                }
+              }
+            }
+          },
+          "victoria-park": {
+            "name": "Victoria Park",
+            "coords": {
+              "lat": -43.60,
+              "lon": 172.65
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "victoria-park"
+                }
+              },
+              "park": {
+                "method": "scrapePark",
+                "info": {
+                  "withChromedriver": true,
+                  "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+                }
+              }
+            }
+          },
+          "hanmer-trails": {
+            "name": "Hanmer Trails",
+            "coords": {
+              "lat": -42.51,
+              "lon": 172.83
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "hanmer-forest-park"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "hanmer-forest-park"
+                }
               }
             }
           }
-        },
-        "victoria-park": {
-          "name": "Victoria Park",
-          "coords": {
-            "lat": -43.60,
-            "lon": 172.65
-          },
-          "hasUplifts": false,
-          "methods": {
-            "trails": {
-              "method": "copyFromTrailforks",
-              "info": {
-                "regionID": "victoria-park"
-              }
+        }
+      },
+      "otago": {
+        "name": "Otago",
+        "parks": {
+          "skyline-queenstown": {
+            "name": "Skyline Queenstown",
+            "coords": {
+              "lat": -45.02,
+              "lon": 168.65
             },
-            "park": {
-              "method": "scrapePark",
-              "info": {
-                "withChromedriver": true,
-                "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+            "hasUplifts": true,
+            "methods": {
+              "trails": {
+                "method": "scrapeGradeAndGetStatusFromTrailforks",
+                "info": {
+                  "withChromedriver": false,
+                  "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "queenstown-bike-park-4524"
+                }
               }
             }
-          }
-        },
-        "hanmer-trails": {
-          "name": "Hanmer Trails",
-          "coords": {
-            "lat": -42.51,
-            "lon": 172.83
           },
-          "hasUplifts": false,
-          "methods": {
-            "trails": {
-              "method": "copyFromTrailforks",
-              "info": {
-                "regionID": "hanmer-forest-park"
-              }
+          "sticky-forest": {
+            "name": "Sticky Forest",
+            "coords": {
+              "lat": -44.67,
+              "lon": 169.14
             },
-            "park": {
-              "method": "copyFromTrailforks",
-              "info": {
-                "regionID": "hanmer-forest-park"
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "sticky-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "sticky-forest"
+                }
+              }
+            }
+          },
+          "7-mile": {
+            "name": "7 Mile",
+            "coords": {
+              "lat": -45.06,
+              "lon": 168.58
+            },
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "7-mile-riding-area"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "7-mile-riding-area"
+                }
               }
             }
           }
         }
       }
-    }
-  },
-  "otago": {
-    "name": "Otago",
-    "parks": {
-      "skyline-queenstown": {
-        "name": "Skyline Queenstown",
-        "coords": {
-          "lat": -45.02,
-          "lon": 168.65
-        },
-        "hasUplifts": true,
-        "methods": {
-          "trails": {
-            "method": "scrapeGradeAndGetStatusFromTrailforks",
-            "info": {
-              "withChromedriver": false,
-              "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/"
-            }
-          },
-          "park": {
-            "method": "copyFromTrailforks",
-            "info": {
-              "regionID": "queenstown-bike-park-4524"
-            }
-          }
-        }
-      },
-      "sticky-forest": {
-        "name": "Sticky Forest",
-        "coords": {
-          "lat": -44.67,
-          "lon": 169.14
-        },
-        "methods": {
-          "trails": {
-            "method": "copyFromTrailforks",
-            "info": {
-              "regionID": "sticky-forest"
-            }
-          },
-          "park": {
-            "method": "copyFromTrailforks",
-            "info": {
-              "regionID": "sticky-forest"
-            }
-          }
-        }
-      },
-      "7-mile": {
-        "name": "7 Mile",
-        "coords": {
-          "lat": -45.06,
-          "lon": 168.58
-        },
-        "methods": {
-          "trails": {
-            "method": "copyFromTrailforks",
-            "info": {
-              "regionID": "7-mile-riding-area"
-            }
-          },
-          "park": {
-            "method": "copyFromTrailforks",
-            "info": {
-              "regionID": "7-mile-riding-area"
-            }
-          }
-        }
-      }
-    }
-  },
-  "ski": {
-    "canterbury": {
-      "name": "Canterbury",
-      "parks": {}
     },
-    "otago": {
-      "name": "Otago",
-      "parks": {}
+    "ski": {
+      "canterbury": {
+        "name": "Canterbury",
+        "parks": {}
+      },
+      "otago": {
+        "name": "Otago",
+        "parks": {}
+      }
     }
   }
 }
