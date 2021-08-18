@@ -10,6 +10,7 @@ selenium = "*"
 webdriver-manager = "*"
 dnspython = "*"
 pymongo = "*"
+python-log-indenter = "*"
 
 [requires]
 python_version = "3.9"

@@ -6,7 +6,7 @@ Trails = list[dict[str, Any]]
 
 class MethodInterface():
     @staticmethod
-    def main(park_ID: str, park: dict, status: dict) -> Any: ...
+    def main(park_ID: str, info: dict, status: dict) -> Any: ...
 
 class ScraperInterface():
     @staticmethod

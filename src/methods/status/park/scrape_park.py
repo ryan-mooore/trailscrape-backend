@@ -1,15 +1,16 @@
 from typing import Any
 from methods.shared import scrape
-import logging
+from helpers.setup import log
 
 def main(**kwargs: Any) -> bool:
     park_status = None
     
-    logging.info("Getting scraping data...")
+    log.info("Requesting website data...").add()
     scraper = scrape.get_scraper(kwargs["park_ID"])
     soup = scrape.get_soup(kwargs["info"])
     
-    logging.info("Scraping (Park status)...")
+    log.sub().info("Scraping park status...").add()
     park_status = scraper.get_park_status(soup)
+    log.sub()
 
     return park_status

@@ -1,4 +1,4 @@
-import logging
+from helpers.setup import log
 from difflib import get_close_matches
 from typing import Any
 
@@ -9,16 +9,16 @@ from methods.shared import scrape, trailforks
 def main(**kwargs: Any) -> Trails:
     trails = None
     
-    logging.info("Getting scraping data...")
+    log.info("Requesting website data...").add()
     scraper = scrape.get_scraper(kwargs["park_ID"])
     soup = scrape.get_soup(kwargs["info"])
-    logging.info("Scraping (Trail grades)...")
+    log.sub().info("Scraping trails...").add()
     trails = scraper.get_trails(soup)
 
-    logging.info("Making Trailforks api call (Trail status)...")
+    log.sub().info("Making Trailforks api call...").add()
     trailforks_trails = trailforks.get_trails(kwargs["info"]["regionID"])
     trailforks_trail_names = [trail["name"] for trail in trailforks_trails]
-    logging.info(f"Matching trails to Trailforks trails...")
+    log.sub().info(f"Matching trails to Trailforks trails...").add()
     for trail in trails:
         matches = get_close_matches(trail["name"], trailforks_trail_names)
         if matches:
@@ -26,6 +26,7 @@ def main(**kwargs: Any) -> Trails:
             if matched_trail:
                 trail["isOpen"] = matched_trail["isOpen"]
                 trail["trailforksName"] = matched_trail["trailforksName"]
-                logging.info(f"Matched {matched_trail['name']} to {trail['name']}")
+                log.debug(f"Matched {matched_trail['name']} to {trail['name']}")
+    log.sub()
 
     return trails

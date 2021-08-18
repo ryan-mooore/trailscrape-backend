@@ -1,6 +1,6 @@
 import importlib
 from types import ModuleType, SimpleNamespace
-from helpers.setup import driver
+from helpers.chromedriver import driver
 
 from requests import get
 

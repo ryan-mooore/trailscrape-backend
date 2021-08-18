@@ -1,10 +1,9 @@
+import re
+
 import requests
 from bs4 import BeautifulSoup
-import logging
-import re
-from documents.documents import db
 
-logging.basicConfig(level=20)
+from helpers.setup import db, log
 
 
 def get_trail_ids(region_name: str) -> dict[int, str]:
@@ -37,35 +36,43 @@ def get_numeric_id(region_name: str) -> int:
 
 
 if __name__ == "__main__":
-    logging.info("Updating trails in Trailforks regions...")
+    log.info("Updating trails in Trailforks regions...").add()
     for activity, locations in db.regions.find_one()["activities"].items():
         for region_ID, region in locations.items():
             for park_ID, park in region["parks"].items():
                 try:
-                    trailforksID = park["methodInfo"]["regionID"]
+                    trailforksID = park["methods"]["trail"]["info"]["regionID"]
                 except KeyError: continue
-                parkIDs = trailforksID if type(trailforksID) is list else [trailforksID]
+                log.info(f"Finding trailforks regions at {park_ID}...").add()
+                trailforks_region_IDs = trailforksID if type(trailforksID) is list else [trailforksID]
                 
-                for parkID in parkIDs:
+                for trailforks_region_ID in trailforks_region_IDs:
+                    log.info(f"Updating trailforks regionID at {trailforks_region_ID}...").add()
                     try:
-                        trailforks_park = db.trailforks_region.find_one({"str_ID": parkID})
-                        existing_trails = set(trailforks_park["trails"])
+                        log.info("Finding existing trails...")
+                        trailforks_region = db.trailforks_region.find_one({"str_ID": trailforks_region_ID})
+                        existing_trails = set(trailforks_region["trails"])
                     except TypeError:
-                        db.trailforks_region.insert_one({"str_ID": parkID})
-                        trailforks_park = db.trailforks_region.find_one({"str_ID": parkID})
+                        log.info("No existing trails found. Creating new entry...")
+                        db.trailforks_region.insert_one({"str_ID": trailforks_region_ID})
+                        trailforks_region = db.trailforks_region.find_one({"str_ID": trailforks_region_ID})
                         existing_trails = set()
                     
-                    new_trails = get_trail_ids(parkID)
-                    trailforks_park["trails"] = new_trails
-                    trailforks_park["num_ID"] = get_numeric_id(parkID)
+                    log.info(f"Requesting trails...")
+                    new_trails = get_trail_ids(trailforks_region_ID)
+                    trailforks_region["trails"] = new_trails
+                    trailforks_region["num_ID"] = get_numeric_id(trailforks_region_ID)
 
                     new_trails = set(new_trails)
+                    
+                    log.add() 
+                    for trailID in existing_trails ^ new_trails:
+                        log.info(f"Updated trail {trailID}")
+                    log.sub()
+                    
+                    log.info("Saving to database...")
+                    db.trailforks_region.update_one({"_id": trailforks_region["_id"]}, {"$set": trailforks_region})
+                    log.sub().info(f"Done. {len(existing_trails ^ new_trails)} trails modified")
+                log.sub()
 
-                    logging.info(
-                        f"Updated trails for {parkID} "
-                        f"({len(existing_trails ^ new_trails)} modified: "
-                        f"{', '.join(str(trailID) for trailID in existing_trails ^ new_trails)})"
-                    )
-                    db.trailforks_region.update_one({"_id": trailforks_park["_id"]}, {"$set": trailforks_park})
-
-    logging.info("Done.")
+    log.sub().info("Done")
