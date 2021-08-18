@@ -1,9 +1,8 @@
-from collections import defaultdict
-from documents.documents import db
+from helpers.setup import db
 
 if __name__ == "__main__":
     db.status.drop()
-    region = {}
+    region: dict = {}
     for activity, locations in db.regions.find_one()["activities"].items():
         region[activity] = {}
         for location, parks in locations.items():

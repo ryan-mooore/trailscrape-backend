@@ -1,12 +1,17 @@
-from documents.documents import db
-from datetime import datetime
 import logging
-from other import weather
-from sys import argv
-import importlib
 import re
+from datetime import datetime
+from importlib import import_module
+from sys import argv
+
+from helpers.setup import db
+from helpers.types import MethodInterface
+from other import weather
 
 logging.basicConfig(level=20)
+
+def import_method(modpath: list[str]) -> MethodInterface:
+    return __import__(".".join(modpath).lower(), fromlist=['_trash'])
 
 if __name__ == "__main__":
     regions = db.regions.find_one()
@@ -18,14 +23,13 @@ if __name__ == "__main__":
                     if argv[1] and park_ID != argv[1]: continue
                 except IndexError:
                     pass
-                new_status = {
-                    "scrapeError": False
-                }
+                new_status: dict = {}
                 try:
-                    new_status["status"] = importlib.import_module(
-                        "methods." + re.sub(r"(?<!^)(?=[A-Z])", "_", park["method"])
-                        .lower()
-                    ).main(park_ID, park)
+                    for status_type, method in park["methods"].items():
+                        new_status[status_type] = import_method(
+                            ["methods", "status", status_type, re.sub(r"(?<!^)(?=[A-Z])", "_", method["method"])]
+                        ).main(park_ID=park_ID, info=method["info"], status=new_status)
+                    new_status["scrapeError"] = False
                     new_status["scrapeTime"] = datetime.utcnow()
                     new_status["weather"] = {
                         "temp": weather.get_temp(**park["coords"]),

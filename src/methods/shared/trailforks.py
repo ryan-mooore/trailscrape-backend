@@ -1,8 +1,8 @@
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, Union
 import requests
 import logging
-from documents.documents import db
+from helpers.setup import db
 
 def get_api_trails(trail_ids: list[int]) -> dict[str, Any]:
     logging.info(f"TF API:requesting trails {trail_ids}")
@@ -12,7 +12,7 @@ def get_api_region(region_id: int, since:int=0, api_key: str = "docs") -> dict[s
     logging.info(f"TF API:requesting region {region_id}")
     return requests.get(f"https://www.trailforks.com/api/1/region_status?rids={region_id}&since={since}&api_key={api_key}").json()
 
-def get_trails(region: SimpleNamespace) -> list[dict]:
+def get_trails(regions: Union[str, list[str]]) -> list[dict]:
 
     gradeMap = {
         "2": 1, # beginner
@@ -25,7 +25,7 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
     }
 
     trails = []
-    regionIDs = region["methodInfo"]["regionID"] if type(region["methodInfo"]["regionID"]) is list else [region["methodInfo"]["regionID"]]
+    regionIDs = regions if type(regions) is list else [regions]
     for regionID in regionIDs:
         trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})
         for trail in get_api_trails(trailforks_region["trails"].keys())["rmsD"]["tracks"]["rmsD"]["tracks"]:
@@ -40,8 +40,8 @@ def get_trails(region: SimpleNamespace) -> list[dict]:
             )
     return trails
 
-def get_park_status(region: SimpleNamespace) -> bool:
-    regionIDs = region["methodInfo"]["regionID"] if type(region["methodInfo"]["regionID"]) is list else [region["methodInfo"]["regionID"]]
+def get_park_status(regions: Union[str, list[str]]) -> bool:
+    regionIDs = regions if type(regions) is list else [regions]
     open_regions = []
     for regionID in regionIDs:
         trailforks_region = db.trailforks_region.find_one({"str_ID": regionID})

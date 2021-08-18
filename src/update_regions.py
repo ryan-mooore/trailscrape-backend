@@ -1,4 +1,4 @@
-from documents.documents import db
+from helpers.setup import db
 from os import path
 from json import load
 import logging

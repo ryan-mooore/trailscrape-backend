@@ -11,11 +11,21 @@
               "lon": 176.22
             },
             "hasUplifts": false,
-            "method": "scrapeGradeAndGetStatusFromTrailforks",
-            "methodInfo": {
-              "withChromedriver": false,
-              "url": "https://www.skyline.co.nz/en/rotorua/things-to-do/rotorua-mountain-biking/rotorua-mountain-bike-park-info",
-              "regionID": "skyline-rotorua"
+            "methods": {
+              "trail": {
+                "method": "scrapeGradeAndGetStatusFromTrailforks",
+                "info": {
+                  "withChromedriver": false,
+                  "url": "https://www.skyline.co.nz/en/rotorua/things-to-do/rotorua-mountain-biking/rotorua-mountain-bike-park-info",
+                  "regionID": "skyline-rotorua"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "skyline-rotorua"
+                }
+              }
             }
           }
         }
@@ -30,14 +40,27 @@
               "lon": 172.68
             },
             "hasUplifts": false,
-            "method": "scrapeStatusAndGetGradeFromTrailforks",
-            "methodInfo": {
-              "withChromedriver": false,
-              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-              "regionID": [
-                "port-hills-west",
-                "port-hills-east"
-              ]
+            "methods": {
+              "trail": {
+                "method": "scrapeStatusAndGetGradeFromTrailforks",
+                "info": {
+                  "withChromedriver": false,
+                  "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
+                  "regionID": [
+                    "port-hills-west",
+                    "port-hills-east"
+                  ]
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": [
+                    "port-hills-west",
+                    "port-hills-east"
+                  ]
+                }
+              }
             }
           },
           "mt-hutt": {
@@ -47,9 +70,19 @@
               "lon": 171.56
             },
             "hasUplifts": false,
-            "method": "copyFromTrailforks",
-            "methodInfo": {
-              "regionID": "mt-hutt-bike-park"
+            "methods": {
+              "trail": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "mt-hutt-bike-park"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "mt-hutt-bike-park"
+                }
+              }
             }
           },
           "akatrax": {
@@ -59,9 +92,19 @@
               "lon": 172.96
             },
             "hasUplifts": false,
-            "method": "copyFromTrailforks",
-            "methodInfo": {
-              "regionID": "akatrax-mtb-club"
+            "methods": {
+              "trail": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "akatrax-mtb-club"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "akatrax-mtb-club"
+                }
+              }
             }
           },
           "christchurch-adventure-park": {
@@ -71,11 +114,28 @@
               "lon": 172.64
             },
             "hasUplifts": true,
-            "method": "scrapeTrails",
-            "methodInfo": {
-              "withChromedriver": true,
-              "url": "https://www.christchurchadventurepark.com/trail-information",
-              "liftUrl": "https://christchurchadventurepark.com/park-status/"
+            "methods": {
+              "trail": {
+                "method": "scrapeTrails",
+                "info": {
+                  "withChromedriver": true,
+                  "url": "https://www.christchurchadventurepark.com/trail-information"
+                }
+              },
+              "park": {
+                "method": "inferFromTrails",
+                "info": {
+                  "withChromedriver": true,
+                  "url": "https://christchurchadventurepark.com/park-status/"
+                }
+              },
+              "lift": {
+                "method": "scrapeLift",
+                "info": {
+                  "withChromedriver": true,
+                  "url": "https://christchurchadventurepark.com/park-status/"
+                }
+              }
             }
           },
           "craigieburn": {
@@ -85,110 +145,161 @@
               "lon": 171.70
             },
             "hasUplifts": false,
-            "method": "api",
-            "methodInfo": {
-              "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
-              "attributeMap": {
-                "id": "id",
-                "name": "name",
-                "openBike": "isOpen",
-                "trackGrade": "grade"
+            "methods": {
+              "trail": {
+                "method": "api",
+                "info": {
+                  "url": "https://www.craigieburntrails.org.nz/wp-content/plugins/craigie-tracks/track-details-from-ct.php",
+                  "attributeMap": {
+                    "id": "id",
+                    "name": "name",
+                    "openBike": "isOpen",
+                    "trackGrade": "grade"
+                  },
+                  "filter": "showStatus"
+                }
               },
-              "filter": "showStatus"
+              "park": {
+                "method": "inferFromTrails",
+                "info": {}
+              }
             }
+          }
+        },
+        "crocodile": {
+          "name": "Crocodile XC MTB Park",
+          "coords": {
+            "lat": -43.60,
+            "lon": 172.59
           },
-          "crocodile": {
-            "name": "Crocodile XC MTB Park",
-            "coords": {
-              "lat": -43.60,
-              "lon": 172.59
+          "hasUplifts": false,
+          "methods": {
+            "trail": {
+              "method": "copyFromTrailforks",
+              "info": {
+                "regionID": "crocodile-xc-mtb-park"
+              }
             },
-            "hasUplifts": false,
-            "method": "scrapeParkAndGetTrailsFromTrailforks",
-            "methodInfo": {
-              "withChromedriver": true,
-              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-              "regionID": "crocodile-xc-mtb-park"
+            "park": {
+              "method": "scrapePark",
+              "info": {
+                "withChromedriver": true,
+                "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+              }
             }
+          }
+        },
+        "victoria-park": {
+          "name": "Victoria Park",
+          "coords": {
+            "lat": -43.60,
+            "lon": 172.65
           },
-          "victoria-park": {
-            "name": "Victoria Park",
-            "coords": {
-              "lat": -43.60,
-              "lon": 172.65
+          "hasUplifts": false,
+          "methods": {
+            "trail": {
+              "method": "copyFromTrailforks",
+              "info": {
+                "regionID": "victoria-park"
+              }
             },
-            "hasUplifts": false,
-            "method": "scrapeParkAndGetTrailsFromTrailforks",
-            "methodInfo": {
-              "withChromedriver": true,
-              "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/",
-              "regionID": "victoria-park"
+            "park": {
+              "method": "scrapePark",
+              "info": {
+                "withChromedriver": true,
+                "url": "https://www.ccc.govt.nz/transport/cycling/find-a-ride/trackstatus/"
+              }
             }
+          }
+        },
+        "hanmer-trails": {
+          "name": "Hanmer Trails",
+          "coords": {
+            "lat": -42.51,
+            "lon": 172.83
           },
-          "haven": {
-            "name": "Haven Mountain Bike Park",
-            "coords": {
-              "lat": -43.71,
-              "lon": 172.66
+          "hasUplifts": false,
+          "methods": {
+            "trail": {
+              "method": "copyFromTrailforks",
+              "info": {
+                "regionID": "hanmer-forest-park"
+              }
             },
-            "hasUplifts": false,
-            "method": "scrapeParkAndGetTrailsFromTrailforks",
-            "methodInfo": {
+            "park": {
+              "method": "copyFromTrailforks",
+              "info": {
+                "regionID": "hanmer-forest-park"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "otago": {
+    "name": "Otago",
+    "parks": {
+      "skyline-queenstown": {
+        "name": "Skyline Queenstown",
+        "coords": {
+          "lat": -45.02,
+          "lon": 168.65
+        },
+        "hasUplifts": true,
+        "methods": {
+          "trail": {
+            "method": "scrapeGradeAndGetStatusFromTrailforks",
+            "info": {
               "withChromedriver": false,
-              "url": "https://havenmtb.org.nz/",
-              "regionID": "haven-mountain-bike-park"
+              "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/"
             }
           },
-          "hanmer-trails": {
-            "name": "Hanmer Trails",
-            "coords": {
-              "lat": -42.51,
-              "lon": 172.83
-            },
-            "hasUplifts": false,
+          "park": {
             "method": "copyFromTrailforks",
-            "methodInfo": {
-              "regionID": "hanmer-forest-park"
+            "info": {
+              "regionID": "queenstown-bike-park-4524"
             }
           }
         }
       },
-      "otago": {
-        "name": "Otago",
-        "parks": {
-          "skyline-queenstown": {
-            "name": "Skyline Queenstown",
-            "coords": {
-              "lat": -45.02,
-              "lon": 168.65
-            },
-            "hasUplifts": true,
-            "method": "scrapeGradeAndGetStatusFromTrailforks",
-            "methodInfo": {
-              "withChromedriver": false,
-              "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/",
-              "regionID": "queenstown-bike-park-4524"
-            }
-          },
-          "sticky-forest": {
-            "name": "Sticky Forest",
-            "coords": {
-              "lat": -44.67,
-              "lon": 169.14
-            },
+      "sticky-forest": {
+        "name": "Sticky Forest",
+        "coords": {
+          "lat": -44.67,
+          "lon": 169.14
+        },
+        "methods": {
+          "trail": {
             "method": "copyFromTrailforks",
-            "methodInfo": {
+            "info": {
               "regionID": "sticky-forest"
             }
           },
-          "7-mile": {
-            "name": "7 Mile",
-            "coords": {
-              "lat": -45.06,
-              "lon": 168.58
-            },
+          "park": {
             "method": "copyFromTrailforks",
-            "methodInfo": {
+            "info": {
+              "regionID": "sticky-forest"
+            }
+          }
+        }
+      },
+      "7-mile": {
+        "name": "7 Mile",
+        "coords": {
+          "lat": -45.06,
+          "lon": 168.58
+        },
+        "methods": {
+          "trail": {
+            "method": "copyFromTrailforks",
+            "info": {
+              "regionID": "7-mile-riding-area"
+            }
+          },
+          "park": {
+            "method": "copyFromTrailforks",
+            "info": {
               "regionID": "7-mile-riding-area"
             }
           }

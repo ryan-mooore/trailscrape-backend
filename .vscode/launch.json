@@ -14,7 +14,7 @@
         },
         {
             "name": "Update Trailforks Regions",
-            "type": "python"
+            "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/src/update_trailforks_regions.py",
             "console": "integratedTerminal"

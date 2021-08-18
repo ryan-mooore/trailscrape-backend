@@ -1,28 +1,23 @@
-from types import SimpleNamespace, ModuleType
-import requests
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from time import sleep
-from bs4 import BeautifulSoup as BS
 import importlib
+from types import ModuleType, SimpleNamespace
+from helpers.setup import driver
 
-def get_driver() -> webdriver.Chrome:
-    options = webdriver.ChromeOptions()
-    options.add_argument("headless")
-    return webdriver.Chrome(ChromeDriverManager().install(), options=options)
+from requests import get
 
+from helpers.types import ScraperInterface
 
-def get_soup(region: SimpleNamespace):
+from bs4 import BeautifulSoup as BS # type: ignore
+from selenium import webdriver # type: ignore
 
-    if region["methodInfo"]["withChromedriver"]:
-        driver = get_driver()
-        driver.get(region["methodInfo"]["url"])
+def get_soup(info: dict) -> BS:
+
+    if info["withChromedriver"]:
+        driver.get(info["url"])
         return BS(driver.page_source, "html.parser")
 
     else:
-        content = requests.get(region["methodInfo"]["url"])
+        content = get(info["url"])
         return BS(content.text, "html.parser")
 
-def get_scraper(park_ID: SimpleNamespace) -> ModuleType:
-    return importlib.import_module(
-    "scrapers." + park_ID.replace("-", "_"))
+def get_scraper(park_ID: str) -> ScraperInterface:
+    return __import__("scrapers." + park_ID.replace("-", "_"), fromlist=['_trash'])

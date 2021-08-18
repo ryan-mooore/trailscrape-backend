@@ -61,3 +61,6 @@ def get_lift_status(soup):
         if 'CLOSED' in string: return False
         if 'OPEN' in string: return True
     return None
+
+def get_park_status(soup):
+    return False
