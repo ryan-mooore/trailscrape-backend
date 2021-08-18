@@ -130,7 +130,7 @@
                 }
               },
               "lift": {
-                "method": "scrapeLift",
+                "method": "inferFromTrails",
                 "info": {
                   "withChromedriver": true,
                   "url": "https://christchurchadventurepark.com/park-status/"
@@ -250,7 +250,8 @@
                 "method": "scrapeGradeAndGetStatusFromTrailforks",
                 "info": {
                   "withChromedriver": false,
-                  "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/"
+                  "url": "https://www.skyline.co.nz/en/queenstown/things-to-do/queenstown-bike-park-access/mountain-bike-park-info/",
+                  "regionID": "queenstown-bike-park-4524"
                 }
               },
               "park": {
