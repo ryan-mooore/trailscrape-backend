@@ -5,6 +5,7 @@ from importlib import import_module
 from sys import argv
 
 from helpers.setup import db, log
+from helpers.chromedriver import driver
 from helpers.types import MethodInterface
 from other import weather
 
