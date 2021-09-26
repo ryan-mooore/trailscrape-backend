@@ -7,7 +7,7 @@ grade_helper = [
     None,
     "ADVANCED",
     "EXPERT",
-    None
+    "PRO"
 ]
 
 def get_trails(soup):

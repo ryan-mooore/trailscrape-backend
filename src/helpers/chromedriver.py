@@ -1,5 +1,4 @@
 import logging
-import pymongo  # type: ignore
 from python_log_indenter import IndentedLoggerAdapter # type: ignore
 from selenium import webdriver  # type: ignore
 from webdriver_manager.chrome import ChromeDriverManager  # type: ignore
