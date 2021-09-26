@@ -21,7 +21,7 @@ def get_trails(regions: Union[str, list[str]]) -> list[dict]:
         "11": 4, # advanced
         "5": 5, # expert
         "6": 6, # extreme / dbl black
-        "8": None # Proline
+        "8": 7 # Proline
     }
 
     trails = []
