@@ -1,6 +1,33 @@
 {
   "activities": {
     "bike": {
+      "auckland": {
+        "name": "Auckland",
+        "parks": {
+          "woodhill": {
+            "name": "Woodhill MTB Park",
+            "coords": {
+              "lat": -36.74,
+              "lon": 174.41
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "woodhill-mountain-bike-park"
+                }
+              },
+              "park": {
+                "method": "copyFromGmaps",
+                "info": {
+                  "placeID": "ChIJQ_VQo-ENDW0RioRvBMEA31o"
+                }
+              }
+            }
+          }
+        }
+      },
       "bay-of-plenty": {
         "name": "Bay of Plenty",
         "parks": {
