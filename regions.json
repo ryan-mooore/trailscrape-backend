@@ -94,6 +94,10 @@
                 "info": {
                   "placeID": "ChIJv8IMc4i8cm0RgSWShLyLT64"
                 }
+              },
+              "lift": {
+                "method": "inferFromTrails",
+                "info": {}
               }
             }
           },
@@ -266,17 +270,11 @@
               },
               "park": {
                 "method": "inferFromTrails",
-                "info": {
-                  "withChromedriver": true,
-                  "url": "https://christchurchadventurepark.com/park-status/"
-                }
+                "info": {}
               },
               "lift": {
                 "method": "inferFromTrails",
-                "info": {
-                  "withChromedriver": true,
-                  "url": "https://christchurchadventurepark.com/park-status/"
-                }
+                "info": {}
               }
             }
           },
@@ -401,6 +399,10 @@
                 "info": {
                   "regionID": "queenstown-bike-park-4524"
                 }
+              },
+              "lift": {
+                "method": "inferFromTrails",
+                "info": {}
               }
             }
           },
