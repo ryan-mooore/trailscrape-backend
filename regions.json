@@ -1,6 +1,55 @@
 {
   "activities": {
     "bike": {
+      "northland": {
+        "name": "Northland",
+        "parks": {
+          "glenbervie": {
+            "name": "Glenbervie Forest",
+            "coords": {
+              "lat": -35.62,
+              "lon": 174.35
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "glenbervie-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "glenbervie-forest"
+                }
+              }
+            }
+          },
+          "parihaka": {
+            "name": "Parihaka MTB Park",
+            "coords": {
+              "lat": -35.71,
+              "lon": 174.35
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "parihaka-mtb-park"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "parihaka-mtb-park"
+                }
+              }
+            }
+          }
+        }
+      },
       "auckland": {
         "name": "Auckland",
         "parks": {
@@ -22,6 +71,72 @@
                 "method": "copyFromGmaps",
                 "info": {
                   "placeID": "ChIJQ_VQo-ENDW0RioRvBMEA31o"
+                }
+              }
+            }
+          },
+          "fourfourty": {
+            "name": "Fourforty MTB Park",
+            "coords": {
+              "lat": -36.99,
+              "lon": 175.20
+            },
+            "hasUplifts": true,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "fourforty-mtb-park"
+                }
+              },
+              "park": {
+                "method": "copyFromGmaps",
+                "info": {
+                  "placeID": "ChIJv8IMc4i8cm0RgSWShLyLT64"
+                }
+              }
+            }
+          },
+          "riverhead": {
+            "name": "Riverhead Forest",
+            "coords": {
+              "lat": -36.74,
+              "lon": 174.56
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "riverhead-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "riverhead-forest"
+                }
+              }
+            }
+          },
+          "maraetai": {
+            "name": "Maraetai Forest",
+            "coords": {
+              "lat": -36.90,
+              "lon": 175.04
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "maraetai-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "maraetai-forest"
                 }
               }
             }
