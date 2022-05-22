@@ -156,7 +156,7 @@
               "lat": -38.11,
               "lon": 176.22
             },
-            "hasUplifts": false,
+            "hasUplifts": true,
             "methods": {
               "trails": {
                 "method": "scrapeGradeAndGetStatusFromTrailforks",
@@ -167,9 +167,63 @@
                 }
               },
               "park": {
+                "method": "copyFromGmaps",
+                "info": {
+                  "placeID": "ChIJd7UWIbYnbG0R3_WEI86FYEU"
+                }
+              },
+              "lift": {
+                "method": "inferFromTrails",
+                "info": {}
+              }
+            }
+          },
+          "whakarewarewa": {
+            "name": "Whakarewarewa Forest",
+            "coords": {
+              "lat": -38.19,
+              "lon": 176.30
+            },
+            "hasUplifts": true,
+            "methods": {
+              "trails": {
                 "method": "copyFromTrailforks",
                 "info": {
-                  "regionID": "skyline-rotorua"
+                  "regionID": "whakarewarewa-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "whakarewarewa-forest"
+                }
+              },
+              "lift": {
+                "method": "copyFromGmaps",
+                "info": {
+                  "placeID": "ChIJ3YNkEMwhbG0RLAgfPRQNQqY"
+                }
+              }
+            }
+          },
+          "cougar": {
+            "name": "Cougar MTB Park",
+            "coords": {
+              "lat": -38.22,
+              "lon": 175.92
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "cougar-mtb-park"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "cougar-mtb-park"
                 }
               }
             }
