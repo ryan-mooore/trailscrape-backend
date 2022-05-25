@@ -230,6 +230,33 @@
           }
         }
       },
+      "taupo": {
+        "name": "Taupō",
+        "parks": {
+          "craters": {
+            "name": "Craters of the Moon",
+            "coords": {
+              "lat": -38.66,
+              "lon": 176.07
+            },
+            "hasUplifts": false,
+            "methods": {
+              "trails": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "craters-mountain-bike-park--wairakei-forest"
+                }
+              },
+              "park": {
+                "method": "copyFromTrailforks",
+                "info": {
+                  "regionID": "craters-mountain-bike-park--wairakei-forest"
+                }
+              }
+            }
+          }
+        }
+      },
       "canterbury": {
         "name": "Canterbury",
         "parks": {
